@@ -91,7 +91,7 @@ angular.module('doowb.angular-pusher', [])
           var channel = pusher.channel(channelName) || pusher.subscribe(channelName);
           channelDeferred.resolve(channel)
           channel.bind(eventName, function (data) {
-            if (callback) callback(data);
+            if (callback) callback(data, channel);
             $rootScope.$broadcast(channelName + ':' + eventName, data);
             $rootScope.$digest();
           });
