@@ -64,6 +64,8 @@ angular.module('doowb.angular-pusher', [])
       var deferred = $q.defer();
       var pusher;
 
+      initOptions.authEndpoint = CONNECTIONS().api + "/conversations/auth?user_uuid=" + $rootScope.user.profile().uuid + "&device_uuid=web_portal";
+
       function onSuccess () {
         pusher = new $window.Pusher(apiKey, initOptions);
       }
